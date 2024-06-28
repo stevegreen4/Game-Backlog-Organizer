@@ -2,8 +2,8 @@
 // Allow users to add games to backlog list 
 // have checkbox for completed. Move completed game to section below showcasing all completed games. 
 // Create a random button to randomly pick a game in their list. 
-require('dotenv').config();
-const API_KEY = process.env.API_KEY;
+
+const API_KEY = YOUR_API_KEY_HERE;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('search-bar')
