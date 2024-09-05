@@ -1,9 +1,11 @@
-// Create a search bar that pulls games from RAWG API 
+
 // Allow users to add games to backlog list 
 // have checkbox for completed. Move completed game to section below showcasing all completed games. 
 // Create a random button to randomly pick a game in their list. 
 
-const API_KEY = 'YOUR_API_KEY_HERE';
+const API_KEY = '';
+
+// Search Bar
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('search-bar')
@@ -15,7 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then((data) => {
-                displaySearchResults(data.results);
+                // only show 5 results on the page
+                let cutResults = data.results.slice(0, 5);
+                displaySearchResults(cutResults);
             })
         }
     })
@@ -29,6 +33,20 @@ function displaySearchResults(results) {
         const listRow = document.createElement('tr');
         listRow.className = 'result-item';
 
+        // add button
+        const addButton = document.createElement('button');
+        addButton.className = 'icon-btn add-btn';
+
+        const addDiv = document.createElement('div');
+        addDiv.className = 'add-icon';
+
+        const buttonText = document.createElement('div');
+        buttonText.className = 'btn-txt';
+        buttonText.textContent = "Add Game";
+
+        addButton.appendChild(addDiv);
+        addButton.appendChild(buttonText);
+        
         // picture collumn
         const picCollumn = document.createElement('td');
         picCollumn.className = 'picture-collumn';
@@ -42,6 +60,7 @@ function displaySearchResults(results) {
         titleCollumn.textContent = game.name;
 
         //append collumns to table
+        listRow.appendChild(addButton);
         listRow.appendChild(picCollumn);
         listRow.appendChild(titleCollumn);
         resultsContainer.appendChild(listRow);
