@@ -13,6 +13,43 @@ h1 {
     justify-content: center;
 }
 
+#search-bar {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+h1 + #search-bar {
+    margin-top: 20px;
+}
+
+#search-list {
+    width: 50%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+#search-list .result-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+#search-list .icon-btn {
+    margin-right: 10px;
+}
+
+#search-list .picture-collumn {
+    margin-right: 10px;
+}
+
+#search-list .title-collumn {
+    flex-grow: 1;
+}
+
+
 /* For add button. From uiverse.io */ 
 .icon-btn {
     width: 50px;
