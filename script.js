@@ -46,6 +46,11 @@ function displaySearchResults(results) {
 
         addButton.appendChild(addDiv);
         addButton.appendChild(buttonText);
+
+        // Event listener for add button 
+        addButton.addEventListener('click', () => {
+            addGameToBacklog(game);
+        });
         
         // picture collumn
         const picCollumn = document.createElement('td');
@@ -65,5 +70,51 @@ function displaySearchResults(results) {
         listRow.appendChild(titleCollumn);
         resultsContainer.appendChild(listRow);
     });
+}
+
+function addGameToBacklog(game) {
+    const backlogTable = document.getElementById('backlog-table'); 
+    const newRow = backlogTable.insertRow(); 
+
+    // Game count 
+    const gameCount = newRow.insertCell(); 
+    const gameCountText = document.createElement('div');
+    gameCountText.className = 'game-count';
+    gameCountText.textContent = `${backlogTable.rows.length - 1}.`; // Subtract 1 to account for the header row
+    gameCount.appendChild(gameCountText);
+
+     // Add game image
+     const imageCell = newRow.insertCell();
+     const gameImage = document.createElement('img');
+     gameImage.src = game.background_image;
+     gameImage.alt = game.name;
+     gameImage.className = 'backlog-game-image';
+     imageCell.appendChild(gameImage);
+ 
+     // Add game title
+     const titleCell = newRow.insertCell();
+     titleCell.textContent = game.name;
+ 
+     // Add completed checkbox
+     const completedCell = newRow.insertCell();
+     const completedCheckbox = document.createElement('input');
+     completedCheckbox.type = 'checkbox';
+     completedCheckbox.addEventListener('change', () => {
+         if (completedCheckbox.checked) {
+             newRow.classList.add('completed');
+         } else {
+             newRow.classList.remove('completed');
+         }
+     });
+     completedCell.appendChild(completedCheckbox);
+ 
+     // Add remove button
+     const removeCell = newRow.insertCell();
+     const removeButton = document.createElement('button');
+     removeButton.textContent = 'Remove';
+     removeButton.addEventListener('click', () => {
+         backlogTable.deleteRow(newRow.rowIndex);
+     });
+     removeCell.appendChild(removeButton);
 }
 
