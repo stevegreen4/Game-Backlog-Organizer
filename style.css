@@ -146,3 +146,89 @@ h1 + #search-bar {
     height: 4px;
     top: calc(50% - 2px);
   }
+
+  .add-btn.clicked {
+    background-color: #e8f5e9;
+    border-color: seagreen;
+    pointer-events: none; /* Prevents multiple clicks */
+}
+
+.add-btn.clicked .add-icon::before,
+.add-btn.clicked .add-icon::after {
+    background: seagreen;
+}
+
+.add-btn.clicked .add-icon::before {
+    transform: rotate(45deg);
+    left: 15px;
+    height: 20px;
+    top: calc(50% - 10px);
+}
+
+.add-btn.clicked .add-icon::after {
+    transform: rotate(-45deg);
+    right: 15px;
+    height: 20px;
+    top: calc(50% - 10px);
+}
+
+.add-btn.clicked .btn-txt {
+    opacity: 0;
+}
+
+.add-btn.clicked:hover {
+    width: 50px;
+}
+
+.add-btn.clicked:hover .add-icon::before,
+.add-btn.clicked:hover .add-icon::after {
+    transform: rotate(45deg);
+    height: 20px;
+    top: calc(50% - 10px);
+}
+
+/* backlog table */
+#backlog-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+#backlog-table th {
+    background-color: #f2f2f2;
+    padding: 12px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    width: 100%;
+    display: table-cell;
+}
+
+#backlog-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+#backlog-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.backlog-game-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.game-count {
+    font-weight: bold;
+    color: #666;
+}
+
+#backlog-table tr.completed {
+    background-color: #e8f5e9;
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+

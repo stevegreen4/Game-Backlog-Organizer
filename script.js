@@ -1,7 +1,7 @@
-
 // Allow users to add games to backlog list 
+// keep results up, even after a refresh (may have to create an API/ database to store all users, games, completed...)
 // have checkbox for completed. Move completed game to section below showcasing all completed games. 
-// Create a random button to randomly pick a game in their list. 
+// Create a random button (Wheel?) to randomly pick a game in their list. 
 
 const API_KEY = '';
 
@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 let cutResults = data.results.slice(0, 5);
                 displaySearchResults(cutResults);
             })
+        } else {
+            displaySearchResults()
         }
     })
 });
@@ -49,6 +51,10 @@ function displaySearchResults(results) {
 
         // Event listener for add button 
         addButton.addEventListener('click', () => {
+            addButton.classList.add('clicked');
+            setTimeout(() => {
+                addButton.classList.remove('clicked');
+            }, 1500); // Remove the checkmark after 1.5 seconds
             addGameToBacklog(game);
         });
         
